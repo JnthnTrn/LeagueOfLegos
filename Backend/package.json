@@ -1,0 +1,17 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "express.js",
+  "scripts": {
+    "dev": "node src/Express.js "
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.966.0",
+    "aws": "^0.0.3-2",
+    "express": "^5.2.1"
+  }
+}
