@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///Users/jnthntrn/Projects/LeagueOfLegos/frontend/src/app/summoner/%5Busername%5D/page.tsx"],"sourcesContent":["interface SummonerPageProps {\n  params: Promise<{\n    username: string;\n  }>;\n}\n\nexport default async function SummonerPage({ params }: SummonerPageProps) {\n  const { username } = await params;\n  const summonerName = decodeURIComponent(username);\n\n  return (\n    <main className=\"flex min-h-screen flex-col items-center justify-center bg-zinc-950 px-4\">\n      <div className=\"w-full max-w-2xl flex flex-col gap-6\">\n        <h1 className=\"text-3xl font-bold text-white\">\n          {summonerName}\n        </h1>\n        <p className=\"text-zinc-400\">Match history coming soon...</p>\n      </div>\n    </main>\n  );\n}"],"names":[],"mappings":";;;;;;AAMe,eAAe,aAAa,EAAE,MAAM,EAAqB;IACtE,MAAM,EAAE,QAAQ,EAAE,GAAG,MAAM;IAC3B,MAAM,eAAe,mBAAmB;IAExC,qBACE,8OAAC;QAAK,WAAU;kBACd,cAAA,8OAAC;YAAI,WAAU;;8BACb,8OAAC;oBAAG,WAAU;8BACX;;;;;;8BAEH,8OAAC;oBAAE,WAAU;8BAAgB;;;;;;;;;;;;;;;;;AAIrC"}}]
+}
