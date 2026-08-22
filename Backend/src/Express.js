@@ -50,7 +50,30 @@ app.get('/summoners/:gameName/:tagLine/matches', async (req, res) => { // get re
             })
         );
 
-        res.json({ puuid, matches: matchDetails });
+const cleanedMatches = matchDetails
+    .filter((match) => match.info && match.info.participants)
+    .map((match) => {
+        const player = match.info.participants.find((p) => p.puuid === puuid);
+        if (!player) return null;
+        
+        const gameDurationMinutes = match.info.gameDuration / 60;
+        const totalCS = player.totalMinionsKilled + player.neutralMinionsKilled;
+
+        return {
+            matchId: match.metadata.matchId,
+            champion: player.championName,
+            kills: player.kills,
+            deaths: player.deaths,
+            assists: player.assists,
+            win: player.win,
+            csPerMin: parseFloat((totalCS / gameDurationMinutes).toFixed(1)),
+            visionScore: player.visionScore,
+            gameDurationMinutes: Math.round(gameDurationMinutes),
+        };
+    })
+    .filter(Boolean);
+
+res.json({ puuid, matches: cleanedMatches });
 
     } catch (e) { // need a catch for the try function in case of an error, so we can log it and send a 500 status code to the client
         console.error(e);
